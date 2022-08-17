@@ -1,0 +1,3 @@
+[submodule "hey-ho"]
+	path = hey-ho
+	url = git@github.com:kharyam/hey-ho.git
