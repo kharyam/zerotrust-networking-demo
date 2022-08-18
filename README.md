@@ -23,7 +23,7 @@ git submodule update
     ```bash
     /gallery
     ```
-2. Open NetObserv to view the traffic. Filters?
+2. Open NetObserv to view the traffic. Try the link in the OCP application menu
 3. Curl some test data
     ```bash
     oc rsh test -n gallery0
