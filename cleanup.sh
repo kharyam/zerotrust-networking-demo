@@ -13,11 +13,11 @@ for i in {0..2}
 do
   for resource in deployment service
   do
-    oc delete $resource --all -n gallery$i
+    oc delete $resource --all -n project$i
   done
 done
 
-oc delete pod test --grace-period=0 -n gallery0
+oc delete pod test --grace-period=0 -n project0
 
 # Reset loki data
 oc delete pod --all -n loki

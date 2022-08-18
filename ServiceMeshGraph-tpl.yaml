@@ -3,7 +3,7 @@ kind: ConsoleLink
 metadata:
   name: kiali-graph-link
 spec:
-  href: 'https://${KIALI_DASHBOARD}/console/graph/namespaces/?traffic=grpc%2CgrpcRequest%2Chttp%2ChttpRequest%2Ctcp%2CtcpSent&graphType=versionedApp&namespaces=gallery0%2Cgallery1%2Cgallery2&duration=60&refresh=15000&edges=throughput%2CthroughputRequest%2CtrafficRate&animation=true&badgeSecurity=true&layout=kiali-dagre&namespaceLayout=kiali-dagre&injectServiceNodes=false'
+  href: 'https://${KIALI_DASHBOARD}/console/graph/namespaces/?traffic=grpc%2CgrpcRequest%2Chttp%2ChttpRequest%2Ctcp%2CtcpSent&graphType=versionedApp&namespaces=project0%2Cproject1%2Cproject2&duration=60&refresh=15000&edges=throughput%2CthroughputRequest%2CtrafficRate&animation=true&badgeSecurity=true&layout=kiali-dagre&namespaceLayout=kiali-dagre&injectServiceNodes=false'
   location: ApplicationMenu
   text: Service Mesh Graph
   applicationMenu:
