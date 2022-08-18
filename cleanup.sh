@@ -1,4 +1,9 @@
 #!/bin/bash
+
+# Create link to kiali dashboard
+export KIALI_DASHBOARD=$(kubectl get route kiali -n smcp -o custom-columns=:.spec.host --no-headers)
+envsubst < ./ServiceMeshLink-tpl.yaml | oc apply -f -
+
 # Delete pods
 for i in {0..2}
 do
