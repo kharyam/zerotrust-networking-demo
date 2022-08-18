@@ -3,7 +3,7 @@ kind: ConsoleLink
 metadata:
   name: netobserv-graph 
 spec:
-  href: 'https://${OCP_CONSOLE}/netflow-traffic?filters=namespace%3Dpoject0%2Cpoject1%2Cpoject2&timeRange=900&limit=100&match=all&reporter=destination&function=sum&type=bytes&layer=both'
+  href: 'https://${OCP_CONSOLE}/netflow-traffic?filters=namespace%3Dproject0%2Cproject1%2Cproject2&timeRange=900&limit=100&match=all&reporter=destination&function=sum&type=bytes&layer=both'
   location: ApplicationMenu
   text: NetObserv Topology 
   applicationMenu:
