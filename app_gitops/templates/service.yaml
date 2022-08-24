@@ -1,0 +1,22 @@
+{{- range $namespaceIndex := until (int .Values.namespaces.count) }}
+  {{- range $deployIndex := until (int $.Values.deployments.count) }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  # name: {{ include "zerotrust_app.fullname" $ }}{{ $deployIndex }}
+  name: {{ $.Values.deployments.prefix }}{{ $deployIndex }}
+  namespace: {{ $.Values.namespaces.prefix }}{{ $namespaceIndex }}
+  labels:
+    {{- include "zerotrust_app.labels" $ | nindent 4 }}
+spec:
+  type: {{ $.Values.service.type }}
+  ports:
+    - port: {{ $.Values.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "zerotrust_app.selectorLabels" $ | nindent 4 }}{{ $deployIndex }}
+  {{- end }}
+{{- end }}

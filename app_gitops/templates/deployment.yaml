@@ -1,0 +1,67 @@
+{{- range $namespaceIndex := until (int .Values.namespaces.count) }}
+  {{- range $deployIndex := until (int $.Values.deployments.count) }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  # name: {{ include "zerotrust_app.fullname" $ }}
+  name: {{ $.Values.deployments.prefix }}{{ $deployIndex }}
+  namespace: {{ $.Values.namespaces.prefix }}{{ $namespaceIndex }}
+  labels:
+    {{- include "zerotrust_app.labels" $ | nindent 4 }}
+spec:
+  replicas: {{ $.Values.deployments.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "zerotrust_app.selectorLabels" $ | nindent 6 }}{{ $deployIndex }}
+  template:
+    metadata:
+      {{- with $.Values.deployments.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "zerotrust_app.selectorLabels" $ | nindent 8 }}{{ $deployIndex }}
+        app: {{ $.Values.deployments.prefix }}{{ $deployIndex }}
+
+    spec:
+      {{- with $.Values.deployments.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      securityContext:
+        {{- toYaml $.Values.deployments.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ $.Chart.Name }}
+          securityContext:
+            {{- toYaml $.Values.deployments.securityContext | nindent 12 }}
+          image: "{{ $.Values.deployments.image.repository }}:{{ $.Values.deployments.image.tag | default $.Chart.AppVersion }}"
+          imagePullPolicy: {{ $.Values.deployments.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+          resources:
+            {{- toYaml $.Values.deployments.resources | nindent 12 }}
+      {{- with $.Values.deployments.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with $.Values.deployments.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with $.Values.deployments.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+  {{- end }}
+{{- end }}  

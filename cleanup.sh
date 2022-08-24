@@ -9,16 +9,16 @@ envsubst < ./ServiceMeshGraph-tpl.yaml | oc apply -f -
 envsubst < ./NetObservGraph-tpl.yaml | oc apply -f -
 
 # Delete pods
-for i in {0..2}
-do
-  for resource in deployment service
-  do
-    oc delete $resource --all -n project$i
-  done
-done
+#for i in {0..2}
+#do
+#  for resource in deployment service
+#  do
+#    oc delete $resource --all -n project$i
+#  done
+#done
 
 oc delete pod test --grace-period=0 -n project0
 
 # Reset loki data
-oc delete pod --all -n loki
-oc delete pvc --all -n loki
+oc delete deployment --all -n loki --wait=false
+oc delete pvc --all -n loki --wait=false
