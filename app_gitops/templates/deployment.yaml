@@ -9,6 +9,7 @@ metadata:
   namespace: {{ $.Values.namespaces.prefix }}{{ $namespaceIndex }}
   labels:
     {{- include "zerotrust_app.labels" $ | nindent 4 }}
+    app.kubernetes.io/part-of: microservice-app-{{ $namespaceIndex }}
 spec:
   replicas: {{ $.Values.deployments.replicaCount }}
   selector:
