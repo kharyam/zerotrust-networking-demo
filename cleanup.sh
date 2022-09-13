@@ -8,14 +8,8 @@ envsubst < ./ServiceMeshOverview-tpl.yaml | oc apply -f -
 envsubst < ./ServiceMeshGraph-tpl.yaml | oc apply -f -
 envsubst < ./NetObservGraph-tpl.yaml | oc apply -f -
 
-# Delete pods
-#for i in {0..2}
-#do
-#  for resource in deployment service
-#  do
-#    oc delete $resource --all -n project$i
-#  done
-#done
+# Update OCP Banner
+oc apply -f ConsoleNotification.yaml
 
 oc delete pod test --grace-period=0 -n project0
 

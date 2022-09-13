@@ -9,6 +9,9 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
+    helm:
+      valueFiles:
+      - values.yaml
     path: app_gitops
     repoURL: https://github.com/kharyam/zerotrust-networking-demo.git
     targetRevision: main
