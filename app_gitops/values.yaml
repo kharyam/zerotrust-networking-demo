@@ -17,7 +17,7 @@ deployments:
   securityContext: {}
 
   image:
-    repository: quay.io/jotak/hey-hotrue
+    repository: quay.io/jotak/hey-ho
     pullPolicy: IfNotPresent
     # Overrides the image tag whose default is the chart appVersion.
     tag: "0.1"
