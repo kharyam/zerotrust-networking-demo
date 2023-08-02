@@ -7,6 +7,7 @@ export OCP_CONSOLE=$(kubectl get route console -n openshift-console -o custom-co
 envsubst < ./ServiceMeshOverview-tpl.yaml | oc apply -f -
 envsubst < ./ServiceMeshGraph-tpl.yaml | oc apply -f -
 envsubst < ./NetObservGraph-tpl.yaml | oc apply -f -
+envsubst < ./GitHubZeroTrust-tpl.yaml | oc apply -f -
 
 # Update OCP Banner
 oc apply -f ConsoleNotification.yaml

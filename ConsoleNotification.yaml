@@ -5,4 +5,4 @@ metadata:
 spec:
   backgroundColor: "purple"
   location: "BannerTopBottom"
-  text: "Zero Trust Networking Demo"
+  text: "Zero Trust Networking"
