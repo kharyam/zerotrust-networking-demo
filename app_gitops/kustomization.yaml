@@ -5,6 +5,9 @@ commonLabels:
   app.kubernetes.io/name: openshift-gitops
 resources:
 - ArgocdApp.yaml
-- Project0.yaml
-- Project1.yaml
-- Project2.yaml
+- smcp-namespace.yaml
+- smcp.yaml
+- smmr.yaml
+- project0-namespace.yaml
+- project1-namespace.yaml
+- project2-namespace.yaml

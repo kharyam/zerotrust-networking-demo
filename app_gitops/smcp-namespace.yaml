@@ -1,5 +1,4 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  annotations:
-  name: project0
+  name: smcp
