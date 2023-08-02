@@ -10,7 +10,7 @@ deployments:
   count: "4"
   replicaCount: 2
   podAnnotations: 
-    sidecar.istio.io/inject: "false"
+    sidecar.istio.io/inject: "true"
   podSecurityContext: {}
   securityContext: {}
 
